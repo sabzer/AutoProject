@@ -7,11 +7,17 @@
 
 package frc.robot.autonomous;
 
-public class MotionPoint {
-    double x;
-    double y;
-    public MotionPoint(double x, double y)
+/**
+ * Add your docs here.
+ */
+
+ double x;
+ double y;
+ double deg;
+public class Waypoint {
+
+    public Waypoint(double x, double y, double deg)
     {
-        
+
     }
 }

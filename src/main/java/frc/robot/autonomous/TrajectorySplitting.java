@@ -7,11 +7,8 @@
 
 package frc.robot.autonomous;
 
-public class MotionPoint {
-    double x;
-    double y;
-    public MotionPoint(double x, double y)
-    {
-        
-    }
+/**
+ * Add your docs here.
+ */
+public class TrajectorySplitting {
 }

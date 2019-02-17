@@ -6,18 +6,28 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.autonomous;
+import frc.robot.autonomous.Waypoint;
 /**
  * Add your docs here.
  */
-public class PathPoint {
-    double x;
-    double y;
-    double s;
+public class PathFinder {
 
-    public PathPoint(double x, double y, double s)
+    Waypoint[] waypoints;
+    public enum PathType{
+        CUBIC_HERMITE,
+        QUINTIC_HERMITE,
+        B_SPLINE;
+    }
+
+    public PathFinder(Waypoint[] waypoints)
     {
-        x=this.x;
-        y=this.y;
-        s=this.s;
+        copy(waypoints);
+    }
+
+    private void copy(Waypoint[] waypoints)
+    {
+        waypoints = new Waypoint[this.waypoints.length];
+        for(int i=0; i<this.waypoints.length; i++)
+            waypoints[i] = new Waypoint(this.waypoints[i].x, this.waypoints[i].y, this.waypoints[i].deg);
     }
 }
