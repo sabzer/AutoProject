@@ -5,16 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.autonomous;
+package frc.robot;
 
-public class TrajectoryFinder {
-
-    public TrajectoryFinder() {
-    }
-
-    public enum MotionProfile{
-        TRIANGULAR,
-        TRAPEZOIDAL,
-        S_CURVE;
-    }
+/**
+ * Add your docs here.
+ */
+public class RobotMap {
 }
