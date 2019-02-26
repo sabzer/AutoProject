@@ -22,49 +22,10 @@ public class PathFinder {
         B_SPLINE;
     }
 
-    public class Spline{//technically like a pair of splines and not a spline, i'm a liar forgive me for my sins
-        double[] xcoef = new double[6];//pos 0 is c_0x^0, pos 1 is c_1x^1, etc... c_5x^5. Cubic -> c_5, c_4=0
-        double[] ycoef = new double[6];
-        double[] xprimecoef = new double[5];
-        double[] yprimecoef = new double[5];
-        double[] xdoubleprimecoef = new double[4];
-        double[] ydoubleprimecoef = new double[4];
-
-        double arcLength;
-        double knot_Distance;
-
-        public Spline()
-        {
-        }
-
-        private void setArcLength()
-        {
-            int NUM_STEPS=10000;
-            double ds=1/NUM_STEPS;
-            arcLength=0;
-            double integrand=0;
-            double s=0;
-            for(int i=1; i<=NUM_STEPS; i++)
-            {
-                s=i*ds;
-                integrand=Math.sqrt(Math.pow(evaluateFunction(xprimecoef, s), 2)+ Math.pow(evaluateFunction(yprimecoef, s), 2));
-                arcLength+=integrand;
-            }
-        }
-
-        private double evaluateFunction(double[] coefficients, double s)
-        {
-            double value=0;
-            for(int i=0; i<coefficients.length; i++)
-                value+=Math.pow(s,i)*coefficients[i];
-            return value;
-        }
-    }
-
     public PathFinder(Waypoint[] waypoints, PathType pathType)
     {
         copy(waypoints);
-        pathType=this.pathType;
+        this.pathType=pathType;
         generateAllSplines();
     }
 
@@ -95,7 +56,7 @@ public class PathFinder {
     {
         temp.knot_Distance = Math.sqrt((x1-x0)*(x1-x0)+(y1-y0)*(y1-y0));
         
-        double cc=temp.knot_Distance*1.1;//tangent vector magnitude, Matlab investigates this a little more.
+        double cc=temp.knot_Distance*1.25;//tangent vector magnitude, Matlab investigates this a little more.
         //tangent magnitude doesnt "mean" much. Matlab experimentation shows different values and why they're chosen
         double a0x=0;//Second Derivative variable, there are only so many letters of the alphabet.
         double m0x=cc*Math.cos(SabaMath.d2r(theta0));

@@ -20,6 +20,6 @@ public class SabaMath
 
     public static double d2r(double angle)
     {
-        return angle*Math.pi/180;
+        return angle*Math.PI/180;
     }
 }

@@ -8,9 +8,9 @@
 package frc.robot.autonomous;
 
 public class Waypoint {
-    double x;
-    double y;
-    double deg;
+    public double x;
+    public double y;
+    public double deg;
 
     public Waypoint(double x, double y, double deg)
     {
