@@ -14,8 +14,8 @@ public class Waypoint {
 
     public Waypoint(double x, double y, double deg)
     {
-        x=this.x;
-        y=this.y;
-        deg=this.deg;
+        this.x=x;
+        this.y=y;
+        this.deg=deg;
     }
 }

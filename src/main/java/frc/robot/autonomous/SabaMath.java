@@ -13,7 +13,7 @@ public class SabaMath
     public static double[] takeDerivative(double[] function)
     {
         double[] result = new double[function.length-1];
-        for(int i=1; i<result.length; i++)
+        for(int i=1; i<=result.length; i++)
             result[i-1]=i*function[i];
         return result;
     }

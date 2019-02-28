@@ -16,8 +16,8 @@ public class PathPoint {
 
     public PathPoint(double x, double y, double s)
     {
-        x=this.x;
-        y=this.y;
-        s=this.s;
+        this.x=x;
+        this.y=y;
+        this.s=s;
     }
 }

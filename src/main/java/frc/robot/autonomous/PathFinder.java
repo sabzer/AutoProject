@@ -31,9 +31,9 @@ public class PathFinder {
 
     private void copy(Waypoint[] waypoints)
     {
-        waypoints = new Waypoint[this.waypoints.length];
-        for(int i=0; i<this.waypoints.length; i++)
-            waypoints[i] = new Waypoint(this.waypoints[i].x, this.waypoints[i].y, this.waypoints[i].deg);
+        this.waypoints = new Waypoint[waypoints.length];
+        for(int i=0; i<waypoints.length; i++)
+            this.waypoints[i] = new Waypoint(waypoints[i].x, waypoints[i].y, waypoints[i].deg);
     }
 
     private boolean generateAllSplines()

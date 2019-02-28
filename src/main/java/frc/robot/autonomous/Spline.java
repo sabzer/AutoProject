@@ -28,7 +28,7 @@ public class Spline
 
     public void setArcLength()
     {
-        int NUM_STEPS=10000;
+        double NUM_STEPS=10000;
         double ds=1/NUM_STEPS;
         arcLength=0;
         double integrand=0;
@@ -37,9 +37,9 @@ public class Spline
         {
             s=i*ds;
             integrand=Math.sqrt(Math.pow(evaluateFunction(xprimecoef, s), 2)+ Math.pow(evaluateFunction(yprimecoef, s), 2));
-            arcLength+=integrand;
+            arcLength+=integrand*ds;
         }
-    }
+   }
 
     public double evaluateFunction(double[] coefficients, double s)
     {
