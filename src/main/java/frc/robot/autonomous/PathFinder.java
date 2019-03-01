@@ -43,6 +43,7 @@ public class PathFinder {
         {
             splines[i] = new Spline();
             splines[i]=generateASpline(waypoints[i], waypoints[i+1], splines[i]);
+            if(i>0) splines[i].previousLength = splines[i-1].previousLength+splines[i-1].arcLength;
         }
         return true;
     }
