@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.autonomous;
-import frc.robot.autonomous.Waypoint;
 /**
  * Add your docs here.
  */

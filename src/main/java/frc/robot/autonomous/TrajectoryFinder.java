@@ -71,7 +71,7 @@ public class TrajectoryFinder {//deceleration is NEGATIVE* remember that pls
         }
     }
 
-    private double[] getPointInfo(double t)
+    public double[] getPointInfo(double t)
     {
         double[] result = new double[3];//contains position, velocity, acceleration in that order
         if(profile==MotionProfile.TRAPEZOIDAL)
