@@ -120,4 +120,19 @@ public class PathFinder {
         //knot distance was done in generating spline method :)
         temp.setArcLength();
     }
+
+    public double[] getSplineNo(double d)
+    {
+        double[] result = new double[2];//first element is spline #, 2nd is how far in the spline it is
+        for(int i=0; i<splines.length; i++)
+        {
+            if(d>=splines[i].previousLength& d<=(splines[i].previousLength+splines[i].arcLength))
+            {
+                result[0]=i;
+                result[1]=d-splines[i].previousLength;
+                return result;
+            }
+        }
+        return result;
+    }
 }
