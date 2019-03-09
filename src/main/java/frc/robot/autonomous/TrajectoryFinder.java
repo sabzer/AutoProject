@@ -25,6 +25,9 @@ public class TrajectoryFinder {//deceleration is NEGATIVE* remember that pls
     double t_dec;
     double d_dec;
 
+    MotionPoint[] trying;
+    double LOOP_HERTZ;
+
     public enum MotionProfile{
         TRIANGULAR,
         TRAPEZOIDAL,
@@ -117,5 +120,34 @@ public class TrajectoryFinder {//deceleration is NEGATIVE* remember that pls
         }
         return result;
     }
+
+    public void getMotionProfile()
+    {
+        trying = new MotionPoint[(int) ((t_acc + t_cruise + t_dec)*LOOP_HERTZ + 1)];
+        double spd;
+        double curv;
+        double xp;
+        double yp;
+        double xpp;
+        double ypp;
+        double sval;
+        int splno;
+        double d;
+        for(int i=0; i<trying.length; i++)
+        {
+            spd=getPointInfo(i/LOOP_HERTZ)[1];
+            splno= (int) (pathfinder.getSplineNo(getPointInfo(i/LOOP_HERTZ)[0])[0]);
+            d=pathfinder.getSplineNo(getPointInfo(i/LOOP_HERTZ)[0])[1];
+            sval=pathfinder.splines[splno].ltos.ceilingEntry(d).getValue();
+            xp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].xprimecoef, sval);
+            xpp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].xdoubleprimecoef, sval);
+            yp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].yprimecoef, sval);
+            ypp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].ydoubleprimecoef, sval);
+
+            curv=Math.abs(xpp*yp-ypp*xp)/Math.pow((xp*xp + yp*yp), 1.5);
+            trying[i] = new MotionPoint(spd,1/curv);
+        }
+    }
+    
 
 }

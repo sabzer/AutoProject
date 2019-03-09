@@ -8,10 +8,11 @@
 package frc.robot.autonomous;
 
 public class MotionPoint {
-    double x;
-    double y;
-    public MotionPoint(double x, double y)
+    double speed;
+    double turn_radius;
+    public MotionPoint(double speed, double turn_radius)
     {
-        
+        this.speed=speed;
+        this.turn_radius=turn_radius;
     }
 }
